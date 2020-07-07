@@ -112,7 +112,6 @@ public class PreTest {
         		ind++;
         	}
         }
-        
         return answer;
     }
 	
