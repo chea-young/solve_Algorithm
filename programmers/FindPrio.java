@@ -1,6 +1,4 @@
-package CodingZone;
 
-import CodingZone.ListQueue.ListNode;
 
 public class FindPrio {
 

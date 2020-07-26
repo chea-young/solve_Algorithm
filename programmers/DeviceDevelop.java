@@ -1,4 +1,3 @@
-package CodingZone;
 
 public class DeviceDevelop {
 	public static void main(String args[]) {

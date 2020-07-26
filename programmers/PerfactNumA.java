@@ -1,4 +1,3 @@
-package CodingZone;
 
 public class PerfactNumA {
 	public static void main(String args[]) {
