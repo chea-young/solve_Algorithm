@@ -15,4 +15,13 @@ def solution(prices):
             answer.append(sec)
     return answer
 
+def solution(prices):
+    answer = [0]*len(prices)
+    for i in range(len(prices)):
+        for j in prices[i+1:]:
+            answer[i] +=1
+            if(j<prices[i]):
+                break
+    return answer
+
 print(solution([1,2,3,2,3]))
