@@ -21,7 +21,7 @@ def solution(m, musicinfos):
         re = information[0]//len(music_note)
         if(information[0]%len(music_note)!=0):
             re +=1
-        info.append([information[0], music_note * re,i, information[2]])
+        info.append([information[0], (music_note * re)[:information[0]],i, information[2]])
     m_note = []
     m_count = 0
     while(m_count < len(m)):
@@ -34,9 +34,11 @@ def solution(m, musicinfos):
         m_note.append(note)
         answer = []
     for i in range(len(info)):
+        num = info[i][1].count(m_note[0])
+        if(num == 0):
+            continue
         index = info[i][1].index(m_note[0])
         count = 0
-        num = info[i][1].count(m_note[0])
         while(count < len(m_note) and index+count<len(info[i][1])):
             if(m_note[count] == info[i][1][index+count]):
                 count+=1
