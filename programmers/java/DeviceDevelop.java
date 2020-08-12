@@ -1,4 +1,4 @@
-
+package java;
 public class DeviceDevelop {
 	public static void main(String args[]) {
 		int [] progesses = {93, 30, 55};

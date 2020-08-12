@@ -1,6 +1,8 @@
+package java;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+
 
 class Failure {
     public static void main(String args[]){

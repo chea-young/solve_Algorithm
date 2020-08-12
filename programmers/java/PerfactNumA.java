@@ -1,4 +1,4 @@
-
+package java;
 public class PerfactNumA {
 	public static void main(String args[]) {
 		PerfactNumA p = new PerfactNumA();
@@ -24,7 +24,6 @@ public class PerfactNumA {
 		System.out.println();
 		
 	}
-
 	
 		  public int[] solution(int[] arr, int divisor) {
 		      int[] answer = {};

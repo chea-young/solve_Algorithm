@@ -1,4 +1,4 @@
-
+package java;
 public class PreTest {
 	public static void main(String[] args) {
 		PreTest person = new PreTest();
