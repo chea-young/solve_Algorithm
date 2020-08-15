@@ -18,27 +18,23 @@ def solution(n, computers):
     answer = []
     for i in range(n):
         in_check = False
-        for ans in answer:
-            if(i in ans):
-                in_check = True
-                break
-        if(in_check):
+        if(check[i] != -1):
             continue
         add = [i]
         out_check = True
+# 오류 없음
         for c in connect:
             if(i in c):
+                out_check = False
                 if(c[0] == i):
                     if(check[c[1]] ==-1):
                         add.append(c[1])
                         check[c[1]]=(count)
                         check[c[0]]=(count)
                         count += 1
+                        answer.append(add)
                     else:
-                        out_check = False
-                        temp = answer[check[c[1]]]
-                        temp.append(c[0])
-                        answer[check[c[1]]] = temp
+                        answer[check[c[1]]].append(c[0])
                         check[c[0]] = check[c[1]]
                 else:
                     if(check[c[0]] ==-1):
@@ -46,16 +42,16 @@ def solution(n, computers):
                         check[c[0]] = count
                         check[c[1]] = count
                         count +=1
+                        answer.append(add)
                     else:
-                        out_check = False
-                        temp = answer[check[c[0]]]
-                        temp.append(c[1])
-                        answer[check[c[0]]] = temp
+                        answer[check[c[0]]].append(c[1])
                         check[c[1]] = check[c[0]]
         if(out_check):
             answer.append(add)
+            
     print("answer", answer)
     return len(answer)
 
 print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
 print(solution(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]]))
+print(solution(4, [[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 0], [1, 1, 0, 1]]))
