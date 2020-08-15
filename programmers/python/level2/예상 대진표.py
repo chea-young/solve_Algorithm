@@ -15,12 +15,16 @@ def solution(n,a,b):
             arr.append(b)
         else:
             arr.append(one)
+            
     answer =1
     while(True):
         temp = []
         number = 0
         while(number<len(arr)):
             one = arr[number]
+            if(number+1 == len(arr)):
+                temp.append(one)
+                break
             two = arr[number+1]
             number +=2
             if(one== a and two == b):
@@ -36,4 +40,5 @@ def solution(n,a,b):
         arr=temp
         answer +=1
 
-print(solution(8,4,7))
+print(solution(7,4,7))
+print(solution(10,4,7))
