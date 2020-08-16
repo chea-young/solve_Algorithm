@@ -1,5 +1,5 @@
 def solution(n,a,b):
-    arr = []
+    arr = [i for i in range(1,n+1)]
     num = 1
     while(num<=n):
         one = num
@@ -10,11 +10,18 @@ def solution(n,a,b):
         elif(two == a and one == a):
             return 1
         elif(one== a or two == a):
-            arr.append(a)
+            if(one==a):
+                arr.remove(two)
+            else:
+                arr.remove(one)
         elif(one== b or two == b):
-            arr.append(b)
+            if(one==b):
+                arr.remove(two)
+            else:
+                arr.remove(one)
         else:
-            arr.append(one)
+            arr.remove(two)
+    print(arr)
     temp = []
     number = 0
     answer = 1
