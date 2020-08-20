@@ -1,19 +1,25 @@
 def solution(number, k):
+    answer = []
     num = [i for i in number]
     max_num = num.index(max(num[:k]))
-    answer = num[max_num]
-    num = num[max_num+1:]
+    answer.append(num[max_num])
+    del num[:max_num+1]
     k -= max_num
-    index = len(num)
+    # 통과
     while(k!=0):
-        max_num = num.index(max(num[:index]))
+        try:
+            max_num = num.index(max(num[:k+1]))
+        except ValueError:
+            num = answer + num
+            max_num = num.index(max(num[:k+1]))
         if(k<max_num):
             index = max_num
             continue
-        answer += num[max_num]
-        num = num[max_num+1:]
+        answer.append(num[max_num])
+        del num[:max_num+1]
         k -= max_num
-        index = len(num)
+    num = answer + num
+    answer = ''
     for i in num:
         answer += i
     return answer
