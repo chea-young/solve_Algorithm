@@ -22,7 +22,7 @@ def solution(n, computers):
             continue
         add = [i]
         out_check = True
-# 오류 없음
+# 오류 없음 - 수정해야 한다.
         for c in connect:
             if(i in c):
                 out_check = False
