@@ -15,11 +15,15 @@ def solution(lines):
     while(True):
         if(times == [] and time_in == []):
             break
-        for t in times:
+        """for t in times:
             if(now == t[0]):
                 time_in.append(t[1])
                 count+=1
-                times.remove(t)
+                times.remove(t)"""
+        if(times != [] and now == times[0][0]):
+            time_in.append(times[0][1])
+            count+=1
+            times.remove(times[0])
         for t in time_in:
             if(now==t):
                 count -=1
