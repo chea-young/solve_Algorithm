@@ -20,6 +20,4 @@ def make_num(n, number):
     elif(n == 16):
         return str(hex(number))[2:].upper()
 
-#print(solution(2,4,2,1))
 print(solution(16,16,2,1))
-#print(solution(16,16,2,2))
