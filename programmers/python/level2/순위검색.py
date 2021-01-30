@@ -15,10 +15,10 @@ def solution(info, query):
         temp = tuple(temp)
         if( temp in list(catalog.keys())):
             list_1 = catalog[temp]
-            list_1.append(person[4])
+            list_1.append(int(person[4]))
             catalog[temp] = list_1
         else: 
-            catalog[temp] = [person[4]]
+            catalog[temp] = [int(person[4])]
 
     for q in query:
         temp = []
@@ -27,7 +27,8 @@ def solution(info, query):
         if(ans[0] == '-'): temp.append(A)
         else: 
             temp.append([ans[0]])
-        if(ans[2] == '-'): temp.append(B)
+        if(ans[2] == '-'): 
+            temp.append(B)
         else: 
             temp.append([ans[2]])
         if(ans[4] == '-'): temp.append(C)
@@ -37,7 +38,9 @@ def solution(info, query):
         else: 
             temp.append([ans[6]])
         num = 0
-        check_num = ans[7]
+        check_num = int(ans[7])
+        
+
         for a in temp[0]:
             for b in temp[1]:
                 for c in temp[2]:
@@ -45,7 +48,7 @@ def solution(info, query):
                         try:
                             check_list = catalog[(a,b,c,d)]
                             for number in check_list:
-                                if(int(number)>=int(check_num)): 
+                                if(int(number)>=check_num): 
                                     num += 1
                         except KeyError:
                             pass
