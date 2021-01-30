@@ -19,7 +19,6 @@ def solution(info, query):
             catalog[temp] = list_1
         else: 
             catalog[temp] = [person[4]]
-    print(catalog)
 
     for q in query:
         temp = []
@@ -27,33 +26,35 @@ def solution(info, query):
         check = []
         if(ans[0] == '-'): temp.append(A)
         else: 
-            temp.append(ans[0])
+            temp.append([ans[0]])
         if(ans[2] == '-'): temp.append(B)
         else: 
-            temp.append(ans[2])
+            temp.append([ans[2]])
         if(ans[4] == '-'): temp.append(C)
         else: 
-            temp.append(ans[4])
+            temp.append([ans[4]])
         if(ans[6] == '-'): temp.append(D)
         else: 
-            temp.append(ans[6])
+            temp.append([ans[6]])
         num = 0
-        """
         check_num = ans[7]
-        if type(temp[0]) == list:
-            for a in temp[0]:
-                if type(temp[1]) == list:
-                    for b in temp[1]:
+        for a in temp[0]:
+            for b in temp[1]:
                 for c in temp[2]:
                     for d in temp[3]:
-                        check_list = catalog[(a,b,c,d)]
-                        for number in check_list:
-                            if(number>check_num): num += 1
-"""
+                        try:
+                            check_list = catalog[(a,b,c,d)]
+                            for number in check_list:
+                                if(int(number)>=int(check_num)): 
+                                    num += 1
+                        except KeyError:
+                            pass
+        answer.append(num)
+    return answer
 
+def test_sample():
+    assert solution(["java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50"],
+["java and backend and junior and pizza 100","python and frontend and senior and chicken 200","cpp and - and senior and pizza 250","- and backend and senior and - 150","- and - and - and chicken 100","- and - and - and - 150"]) == [1,1,1,1,2,4]
 
-
-    #return answer
-
-solution(["java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50"],
-["java and backend and junior and pizza 100","python and frontend and senior and chicken 200","cpp and - and senior and pizza 250","- and backend and senior and - 150","- and - and - and chicken 100","- and - and - and - 150"])
+print (solution(["java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50"],
+["java and backend and junior and pizza 100","python and frontend and senior and chicken 200","cpp and - and senior and pizza 250","- and backend and senior and - 150","- and - and - and chicken 100","- and - and - and - 150"]))
