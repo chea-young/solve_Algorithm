@@ -10,6 +10,15 @@
     4. -가 아닌 것들에 대한 정보만을 모아 해당 value를 찾아 그 list들 끼리 교집합을 찾아준다.
     5. 찾은 교집합 리스트에 수들이 quer_info[7]의 수보다 크거나 같으면 answer list에 추가하여 준다.
 
+### 메뉴 리뉴얼 -> dict이 나을수도
+    1. menu list와 order_people list를 만든다.
+    2. for문에 orders를 넣어 menu list에 단품메뉴가 없으면 추가하고 order_people에 사람 번호를 추가
+        - 혹은 단품메뉴에 있으면 menu list에서 해당 단품메뉴의 index를 찾아 order_people[index]에 사람 번호를 추가한다.
+    3. for문에 course를 돌아가게 하여 코스메뉴 갯수로 만들어질 수 있는 코스요리후보들을 모두 구한다.
+    4. 코스요리 후보들의 각 알파벳 마다의 menu list에 index를 구하여 oder_people에 해당하는 list를 찾고 교집합을 구한다.
+    5. 해당 코스요리 후보들에서 가장 인기가 많은 후보들을 answer에 추가한다.
+        -  만약에 가장 인기가 많은 후보가 1명일 경우 추가하지 않는다.
+
 ## pytest
     - pytest python파일 -s
     => 자세한 정보를 볼 수 있다.
