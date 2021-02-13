@@ -10,7 +10,7 @@
     4. -가 아닌 것들에 대한 정보만을 모아 해당 value를 찾아 그 list들 끼리 교집합을 찾아준다.
     5. 찾은 교집합 리스트에 수들이 quer_info[7]의 수보다 크거나 같으면 answer list에 추가하여 준다.
 
-### 메뉴 리뉴얼 -> dict이 나을수도
+### 메뉴 리뉴얼 -> dict이 나을수도 -> 여러가지 시도해보기
     1. menu list와 order_people list를 만든다.
     2. for문에 orders를 넣어 menu list에 단품메뉴가 없으면 추가하고 order_people에 사람 번호를 추가
         - 혹은 단품메뉴에 있으면 menu list에서 해당 단품메뉴의 index를 찾아 order_people[index]에 사람 번호를 추가한다.
