@@ -41,10 +41,4 @@ def solution(orders, course):
                 break
             answer.append(check[i][1])
         return answer
-
-
-
-            
-        
-
     return answer
