@@ -1,4 +1,4 @@
-# study_Algorithm
+# solve_Algorithm
 ## ./programmers
 - https://programmers.co.kr/
 
