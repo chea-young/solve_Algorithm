@@ -4,7 +4,6 @@
 
 ##
 
-
 ### 순위 검색
     1. info 정보를 split()를 사용하여 list를 만들고 info에 대한 dict을 만든다.
     2. info 순서대로 number list에 넣고 해당 정보의 index를 추가하여 준다.
