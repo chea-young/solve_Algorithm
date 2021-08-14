@@ -1,3 +1,5 @@
+# 안겹치게 추가하기! - 1000 그거 해보기
+# 아니면 그 다음 조랍 찾기
 num = int(input())
 grid = [[0 for i in range(num)] for j in range(num)]
 
