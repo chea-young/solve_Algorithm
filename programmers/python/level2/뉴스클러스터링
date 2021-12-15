@@ -1,0 +1,38 @@
+def solution(str1, str2):
+    multiset1 = make_mutiset(str1)
+    multiset2 = make_mutiset(str2)
+    i_num = intersection(multiset1, multiset2)
+    c_num = combination(multiset1, multiset2)
+    if c_num == 0:
+        return 65536
+    return int(i_num/c_num*65536)
+    
+def make_mutiset(str):
+    multiset = []
+    index = 0
+    while index != len(str):
+        element = str[index:index+2]
+        if element.isalpha() and len(element) == 2:
+            multiset.append(element.upper())
+        index += 1
+    return multiset
+
+def intersection(multiset1, multiset2):
+    num = 0
+    i_set = set(multiset1) & set(multiset2)
+    for ele in i_set:
+        num += min(multiset1.count(ele), multiset2.count(ele))
+    return num 
+
+def combination(multiset1, multiset2):
+    num = 0
+    c_set = set(multiset1) | set(multiset2)
+    for ele in c_set:
+        num += max(multiset1.count(ele), multiset2.count(ele))
+    return num
+
+def test_answer():
+    assert solution("FRANCE", "french") == 16384
+    assert solution("handshake", "shake hands") == 65536
+    assert solution("aa1+aa2", "AAAA12") == 43690
+    assert solution("E=M*C^2", "e=m*c^2") == 65536
