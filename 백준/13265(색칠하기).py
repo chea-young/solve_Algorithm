@@ -1,30 +1,40 @@
 #색칠하기 13265
+from collections import deque
 
-#입력
-case = int(input())
-data = []
-for c in range(case):
-    circle, line = map(int, input().split())
-    ele = []
-    for l in range(line):
+def bfs(x):
+    global answer	
+    check.append(x)
+    circle[x] = 1 # 색은 1, -1
+    color = -1
+    while check:
+        now = check.popleft() # 현재 탐색하는 원
+        color = circle[now] * (-1)
+        for i in data[now]:
+            if circle[i] == 0:
+                circle[i] = color
+                check.append(i)
+            else:
+                if circle[now] == circle[i]:
+                    answer = 'impossible'
+        if answer == 'impossible': break
+
+# 입력
+T = int(input())
+for _ in range(T):
+    c, l = map(int, input().split())
+    circle = [0] * (c+1)
+    data = [[] for i in range(c+1)]
+    # 양방향으로 데이터 받기
+    for i in range(l):
         x, y = map(int, input().split())
-        ele.append((x, y))
-    data.append(ele)
+        data[x].append(y)
+        data[y].append(x)
+    answer = 'possible'
+    check = deque()
+    bfs(1)
 
-for case_data in data:
-    checked_circle = [0 for i in range(len(case_data)+1)]
-    state = True
-    for ele in case_data:
-        if checked_circle[ele[0]] == checked_circle[ele[1]] == 0:
-            checked_circle[ele[0]] = 1
-            checked_circle[ele[1]] = -1
-        elif checked_circle[ele[0]] == checked_circle[ele[1]]: # impossible 경우, 선으로 이어져 있는데 같은 색이 칠해져 있을 때
-            state = False
-            break
-        elif checked_circle[ele[0]] != 0:
-            checked_circle[ele[1]] = (-1) * checked_circle[ele[0]]
-        elif checked_circle[ele[1]] != 0:
-            checked_circle[ele[0]] = (-1) * checked_circle[ele[1]]
-    # 출력
-    if state: print("possible") 
-    else: print("impossible")
+	# 색칠 안된 것들도 있을 수 있으니 한번 더 bfs탐색 
+    for i in range(c+1):
+        if circle[i] == 0:
+            bfs(i)
+    print(answer) #출력
