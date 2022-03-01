@@ -2,7 +2,7 @@
 # 부모 - 자식 1촌, 형제 +2촌
 
 class Node:
-    def __init__(self, id, parent=False, child=False):
+    def __init__(self, id, parent=False, child=[]):
         self.parent = parent
         self.child = child
         self.id = id
@@ -15,16 +15,34 @@ class Node:
 
 def find(parent, child):
     answer = 0
+    visited = [0] * (n+1)
+    print(f'{answer}, check: node: {child}')
     now_p = rel[child].parent
-    while now_p != parent:
-        if now_p == False:
-            answer = -1 # 친척 관계가 없을 때
-            break
+    visited[child] = 1
+    while now_p != parent: # parent 찾기
         answer +=1
-        now_p = rel[now_p].parent
-        if now_p and parent in rel[now_p].child:
-            answer += 2
+        print(f'{answer}, check: node: {now_p}')
+        if rel[now_p].parent == False:
             break
+        now_p = rel[now_p].parent
+        visited[now_p] = 1
+        
+    now_c = rel[now_p].child # child 찾기
+    print(f'{answer}, check: node: {now_p} {now_c}')
+    while True:
+        answer += 1
+        print(f'{answer}, check: node: {now_p} {now_c}')
+        if parent in now_c:
+            break
+        if now_c == []:
+            answer = -1
+            break
+        ele = []
+        for i in now_c:
+            if visited[i] == 0:
+                visited[i] = 1
+                ele += rel[i].child
+        now_c = ele
     return answer
         
 # 입력
@@ -43,13 +61,7 @@ for i in range(int(input())):
         rel[y].parent = x
 
 # 촌수찾기
-answer1 = find(p1, p2)
-answer2 = find(p2, p1)
+answer = find(p1, p2)
 
 #출력
-if answer1 == answer2 == -1:
-    print(-1)
-elif answer1 == -1:
-    print(answer2)
-elif answer2 == -1:
-    print(answer1) 
+print(answer)
