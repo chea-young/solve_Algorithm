@@ -7,33 +7,24 @@
 
 # 입력
 N = int(input())
-
 data = []
 for i in input().split():
     data.append(int(i))
+# 탑 순서 구하기
+stack = [[1, data[0]]]
+answer = [0]
+for i in range(1, N):
+    while stack:
+        if stack[-1][1] > data[i]:
+            answer.append(stack[-1][0])
+            stack.append([i+1, data[i]])
+            break
+        else:
+            stack.pop()
     
-answer = []
-check_loc = N-1
-check = data.pop()
-while data:
-    if data[-1] > check:
-        answer.append(len(data))
-    else:
-        ele = 0
-        for i in range(len(data)-2, -1, -1):
-            if data[i] > check:
-                ele = i+1
-                break
-        answer.append(ele)
-    check = data.pop()
-answer.append(0)
-    
+    if not stack:
+        answer.append(0)
+        stack.append([i+1, data[i]])    
 #출력
-for i in range(len(answer)-1, -1, -1):
-    print(answer[i], end=' ')
-                
-                
-        
-        
-        
-    
+for i in answer:
+    print(i, end=' ')
