@@ -1,5 +1,3 @@
-# 7490 0 만들기
-
 # 입력
 T = int(input())
 for _ in range(T):
@@ -24,3 +22,4 @@ for _ in range(T):
     answer = sorted(answer)
     for ele in answer:
         print(ele) # 출력
+    print()
