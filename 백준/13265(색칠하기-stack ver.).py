@@ -1,5 +1,7 @@
 #색칠하기 13265
+
 from collections import deque
+import sys
 
 def bfs(x):
     global answer	
@@ -21,12 +23,12 @@ def bfs(x):
 # 입력
 T = int(input())
 for _ in range(T):
-    c, l = map(int, input().split())
+    c, l = map(int, sys.stdin.readline().split())
     circle = [0] * (c+1)
     data = [[] for i in range(c+1)]
     # 양방향으로 데이터 받기
     for i in range(l):
-        x, y = map(int, input().split())
+        x, y = map(int, sys.stdin.readline().split())
         data[x].append(y)
         data[y].append(x)
     answer = 'possible'
