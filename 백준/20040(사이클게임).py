@@ -5,9 +5,12 @@
 # 두 점을 선택에 연결 - 다시 X, 교차 0
 
 def find(x, parent):
-    if x != parent[x]:
-        parent[x] = find(parent[x], parent)
-    return parent[x]
+    if x == parent[x]:
+        return x
+    else:
+        y = find(parent[x], parent)
+        parent[x] = y
+        return y
 
 def union(x, y, parent):
     x = find(x, parent)
@@ -25,7 +28,7 @@ def union(x, y, parent):
 dotNum, progressNum = map(int, input().split())
 data = [map(int, input().split()) for _ in range(progressNum)]
         
-parent = [i for i  in range(0, dotNum+1)]
+parent = [i for i  in range(dotNum)]
 for i, [dot1, dot2] in enumerate(data):
     check = union(dot1, dot2, parent)
     if check:
