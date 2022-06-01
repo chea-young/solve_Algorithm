@@ -19,5 +19,17 @@ def solution(participant, completion):
                 return ele
         except KeyError:
             return ele
+        
+def solution(participant, completion):
+    # 리스트 정렬
+    participant.sort()
+    completion.sort()
+    # 완주하지 못한 선수 찾기
+    while completion:
+        eleP = participant.pop()
+        eleC = completion.pop()
+        # 완주한 선수 이름과 참가 이름이 같지 않은 경우 -> 완주 못한 선수 반환
+        if eleP != eleC:
+            return eleP
     
-            
+    return participant.pop()
