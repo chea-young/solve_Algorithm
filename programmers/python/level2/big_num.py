@@ -1,10 +1,12 @@
-
 def solution(numbers):
-    if(sum(numbers) == 0):
-        return '0'
-    num = [str(i) for i in numbers]
-    answer = sorted(num, key=lambda x: x*3, reverse=True)
-    return ''.join(answer)
+    # string 리스트로 바꾸기
+    strNum = map(str, numbers)
+
+    # 리스트 정렬하기
+    sortedStrNum = sorted(strNum, key=lambda x : x*3, reverse=True)
+    
+    # 정렬된 리스트 합치기
+    return ''.join(sortedStrNum)
 
 #print(solution([6,10,2]))
 #print(solution([3, 30, 34, 5, 9]))
