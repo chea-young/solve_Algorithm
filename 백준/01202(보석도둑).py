@@ -1,7 +1,3 @@
-# 1202 보석도둑
-
-# 보석 N개 -> M, V
-# 가방 K개 -> C
 
 #입력
 N, K = map(int, input().split())
@@ -21,8 +17,13 @@ for b in bags:
         if m <= b:
             if not max_data or max_data[1] < v:
                 max_data = [i, v]
+                
+    # 가방 무게보다 작은 보석이 없는 경우
+    if not max_data:
+        continue
     answer += max_data[1]
     del jewels[max_data[0]]
+    
 
 # 출력
 print(answer)
