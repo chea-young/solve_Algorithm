@@ -20,37 +20,35 @@ gear = [input() for _ in range(4)]
 K = int(input())
 rotation = [list(map(int, input().split())) for _ in range(K)]
 
-print(gear)
 # 회전 시키기
 for g, n in rotation:
-    # 현재 회전
-    gear[g-1] = roate_gear(gear[g-1], n)
 
     # 왼쪽으로 확인
-    pre_state = gear[g-1][-3]
+    pre_state = gear[g-1][6]
     now_n = n
-    for i in range(g-1, -1, -1):
+    for i in range(g-1, 0, -1):
         now_state = gear[i-1][2]
         if pre_state == now_state:
             break
         else:
-            pre_state = gear[i-1][-3]
+            pre_state = gear[i-1][6]
             now_n *= (-1)
             gear[i-1] = roate_gear(gear[i-1], now_n)
 
     # 오른쪽으로 확인
     pre_state = gear[g-1][2]
     now_n = n
-    for i in range(g, 5):
-        now_state = gear[i-1][-3]
+    for i in range(g+1, 5):
+        now_state = gear[i-1][6]
         if pre_state == now_state:
             break
         else:
             pre_state = gear[i-1][2]
             now_n *= (-1)
             gear[i-1] = roate_gear(gear[i-1], now_n)
-    
-    print(gear)
+
+    # 현재 회전
+    gear[g-1] = roate_gear(gear[g-1], n)
 
 # 점수 계산하기
 answer = 0
