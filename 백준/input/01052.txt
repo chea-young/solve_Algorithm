@@ -1,0 +1,8 @@
+3 1
+answer == 1
+
+13 2
+answwer 3
+
+1000000 5
+answer = 15808

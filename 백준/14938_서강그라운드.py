@@ -1,61 +1,48 @@
-import sys
-import heapq
-sys.stdin = open("./input/14938.txt", "r")
+import heapq, sys
+INF = sys.maxsize
+input = sys.stdin.readline
 
-def input_func():
-    readl = sys.stdin.readline
-    N, M, R = map(int, readl().split())
-    items = list(map(int, readl().split()))
-    locals_info = [list(map(int, readl().split())) for _ in range(R)]
-    return N, M, R, items, locals_info
+def dijkstra(S):
+    Q = []
+    distance = [INF] * (N+1)
 
-def solve(N, M, R, items, locals_info):
-    # 초기 세팅
-    global route
-    route = {i:[] for i in range(1, N+1)}
-    for l1, l2, dis in locals_info:
-        route[l1].append([l2, dis])
-        route[l2].append([l1, dis])
+    heapq.heappush(Q, [0, S])
+    distance[S] = 0
 
-    data = []
-    max_value = 0
+    while Q:
+        now_dist, now_vertex = heapq.heappop(Q)
 
-    # 최대 개수 찾기
-    for i in range(1, N+1):
-        result = dijkstra(i)
-        max_value = max(max_value, result)
-    return max_value
+        for next_dist, next_vertex in arr[now_vertex]:
+            if next_dist + now_dist < distance[next_vertex]:
+                next_dist += now_dist
+                distance[next_vertex] = next_dist
+                heapq.heappush(Q, [next_dist, next_vertex])
 
-def dijkstra(start):
-    # 초기세팅
-    global route
-    data = [] # -최대 아이템수, 지역, 수색범위
-    visited = [1] * (N+1)
-    sum_list = [0] * (N+1)
-    
-    result = 0
-    heapq.heappush(data, [-items[start-1], start, 0]) 
-    visited[start] = -items[start-1]
-    sum_list[start] = items[start-1]
-    while data:
-        now_cnt, now_local, now_dis = heapq.heappop(data)
-        for l, dis in route[now_local]:
-            next_cnt = now_cnt-items[l-1]
-            next_dis = now_dis + dis
+    return distance
 
-            # 수색 범위를 벗어나는 경우
-            if next_dis > M:
-                continue
-            
-            # 데이터를 업데이트 가능한 경우
-            if visited[l] == 1 or visited[l] >= next_cnt:
-                visited[l] = next_cnt
-                sum_list[l] = items[l-1]
-                heapq.heappush(data, [next_cnt, l, next_dis])
+N, M, R = map(int, input().split())
 
-    return sum(sum_list)
+area_item = list(map(int, input().split()))
+area_item.insert(0, 0)
 
-# 입력
-N, M, R, items, locals_info = input_func()
+arr = [ [] for _ in range(N+1)]
 
-print(solve(N, M, R, items, locals_info))
+for _ in range(R):
+    start, end, dist = map(int, input().split())
+
+    arr[start].append([dist, end])
+    arr[end].append([dist, start])
+
+max_value = int(-1e9)
+
+for i in range(1, N+1):
+    temp_sum = 0
+    result = dijkstra(i)
+
+    for j in range(1,N+1):
+        if result[j] <= M:
+            temp_sum += area_item[j]
+
+    max_value = max(max_value, temp_sum)
+
+print(max_value)
