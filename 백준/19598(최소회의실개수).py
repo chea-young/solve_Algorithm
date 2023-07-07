@@ -32,7 +32,7 @@ import heapq
 
 # 입력
 N = int(input())
-info = [list(map(int, input().split())) for _ in range(N)]
+info = [list(map(int, input().split())) for _ in range(N)] # s, e
 
 # 정렬하기 
 info.sort()

@@ -1,3 +1,8 @@
 {
-    "python.pythonPath": "C:\\Users\\w1004\\anaconda3\\python.exe"
+    "python.pythonPath": "C:\\Users\\w1004\\anaconda3\\python.exe",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#570D40",
+        "titleBar.activeBackground": "#7A1259",
+        "titleBar.activeForeground": "#FFFCFE"
+    }
 }

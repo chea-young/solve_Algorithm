@@ -7,6 +7,10 @@
         모든 폭발 문자 폭발 -> 남은 문자열 합체
     존재 X -> 반복 
 
+
+mdklC4dlkjC44
+C4
+-> 앞에 부분 for문 돌게 터뜨린 -> index 당기기
 """
 
 # 폭발 문자열을 폭발 시키는 함수
@@ -19,6 +23,7 @@ def check_bomb(word, bomb):
         else:
             now += 1
     return word
+
 # 입력
 word = input()
 bomb = input()

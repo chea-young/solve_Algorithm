@@ -25,3 +25,9 @@ def solution(food_times, k):
     # k초 후에 섭취할 음식 찾기
     answer = heapq.heappop(data)
     return answer[1]+1
+
+
+"""
+food_times=[4,2,3,6,7,1,5,8] k=16 answer = 3
+food_times=[4,2,3,6,7,1,5,8] k=27 answer = 5
+"""

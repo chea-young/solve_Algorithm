@@ -19,3 +19,4 @@ while True:
     except:
         print(len(in_list & out_list)) # 출력
         break      
+

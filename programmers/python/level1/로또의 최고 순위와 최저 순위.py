@@ -3,8 +3,7 @@ def solution(lottos, win_nums):
     min_num = len(list(set(lottos) & set(win_nums)))
     max_num = 0
     zero_count = lottos.count(0)
-    if zero_count <= len(win_nums)-min_num: max_num= min_num+zero_count
-    else: max_num= min_num+len(win_nums)
+    max_num= min_num+zero_count # 제로인 수가 정답이 될 수 있는거이기 때문에
     answer = [score[max_num], score[min_num]]
     return answer
 

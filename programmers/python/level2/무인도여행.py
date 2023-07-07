@@ -5,8 +5,6 @@
 sum (상하좌우) = 머물 수 있는 척도
 
 지낼 수 있는 무인도 X -> -1
-
-
 """
 from collections import deque
 

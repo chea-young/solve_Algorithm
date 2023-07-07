@@ -10,7 +10,7 @@ def find_cheeze(board, cheeze):
         for n in range(4):
             ny = dy[n] + i
             nx = dx[n] + j
-            if not board[ny][nx]: # 벽인 경우
+            if board[ny][nx] ==0: # 벽인 경우
                 cnt += 1
     
         # 2면이상 공기에 접촉하고 있을 때
