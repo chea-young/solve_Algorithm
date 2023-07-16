@@ -4,5 +4,9 @@
         "activityBar.background": "#570D40",
         "titleBar.activeBackground": "#7A1259",
         "titleBar.activeForeground": "#FFFCFE"
-    }
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none"
 }
