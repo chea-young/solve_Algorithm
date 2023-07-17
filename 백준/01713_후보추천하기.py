@@ -35,7 +35,7 @@ def solution(N, total_cnt, student_list):
         if (
             recommendations_cnt and s_num in recommendations_cnt.keys()
         ):  # 이전에 추천받은 적이 있는 경우
-            recommendations_cnt[s_num] = [recommendations_cnt[s_num][0] + 1, i]
+            recommendations_cnt[s_num][0] += 1
 
         else:  # 새롭게 추천받은 경우
             total_recommendations_data = list(recommendations_cnt.items())
