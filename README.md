@@ -1,5 +1,10 @@
 # solve_Algorithm
 
+## 알고리즘 Note
+- 최단 경로를 찾는 경우
+  - 음수 존재:벨만포드
+  - 음수 존재 X: 다익스트라
+
 ## ./programmers
 
 - https://programmers.co.kr/
